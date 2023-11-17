@@ -1,4 +1,5 @@
 import requests
+import json
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 
@@ -76,7 +77,8 @@ def get_auth_code():
 
 def write_to_file():
     config = open('./config.txt', "w")
-    config.write(str(client_info))
+    json.dump(client_info, config)
+    # config.write(str(client_info))
     config.close()
 
 
@@ -89,7 +91,10 @@ except FileNotFoundError:
     write_to_file()
 # doesn’t exist
 else:
-    print(f.read())
+    # print(f.read())
+    data = f.read()
+    client_info = json.loads(data)
+    print(client_info)
 # exists
 
 

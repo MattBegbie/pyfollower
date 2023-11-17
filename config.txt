@@ -1,1 +1,1 @@
-{'client_id': 'EHrJICzZ1UqltjGolDMmuqFLRntHUEW7', 'client_secret': 'nDqdE00UDAsSF6Gw', 'redirect_uri': 'https://localhost/redirect', 'response_type': '', 'scope': '', 'code': 'a3f7d96aba8fcd42e082bd58a3404c99'}
+{"client_id": "EHrJICzZ1UqltjGolDMmuqFLRntHUEW7", "client_secret": "nDqdE00UDAsSF6Gw", "redirect_uri": "https://localhost/redirect", "response_type": "", "scope": "", "code": "533d33c28705a6c8f06c2a3fde87da30"}
