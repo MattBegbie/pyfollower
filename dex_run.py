@@ -1,6 +1,9 @@
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 from datetime import datetime
+# program modules
+import dex_read_write
+import dex_request
 
 IS_SANDBOX = True
 
@@ -49,3 +52,20 @@ def get_client_info():
     user_info["timestamp"] = datetime.now()
 
     return (user_info)
+
+
+def main():
+    # check for prerequisites
+    baseURL = create_base_url()
+    client_info = dex_read_write.read_client_info()
+    authorization = dex_read_write.read_authorization()
+
+    if authorization == 1 or client_info == 1:
+        print("missing authorization or client info")
+
+    else:
+        print("authorization found")
+
+
+if __name__ == '__main__':
+    main()

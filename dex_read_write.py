@@ -14,7 +14,7 @@ def read_authorization():
             return (authorization)
     except IOError:
         print("IOERROR, could not find authorization.json")
-        return ("no file")
+        return (1)
 
 
 def write_client_info(data):
@@ -30,4 +30,4 @@ def read_client_info():
             return (client_info)
     except IOError:
         print("IOERROR, could not find client.json")
-        return ("no file")
+        return ({"code": 1})
