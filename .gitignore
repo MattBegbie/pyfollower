@@ -9,7 +9,8 @@ __pycache__/
 #json
 .json
 *.json
-
+*.txt
+.txt
 
 # Distribution / packaging
 .Python
