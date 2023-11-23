@@ -4,6 +4,7 @@ import json
 def write_authorization(data):
     with open("authorization.json", "w") as outfile:
         json.dump(data, outfile)
+        return (0)
 
 
 def read_authorization():
@@ -14,12 +15,13 @@ def read_authorization():
             return (authorization)
     except IOError:
         print("IOERROR, could not find authorization.json")
-        return (1)
+        return (None)
 
 
 def write_client_info(data):
     with open("client.json", "w") as outfile:
         json.dump(data, outfile)
+        return (0)
 
 
 def read_client_info():
@@ -30,4 +32,4 @@ def read_client_info():
             return (client_info)
     except IOError:
         print("IOERROR, could not find client.json")
-        return ({"code": 1})
+        return (None)

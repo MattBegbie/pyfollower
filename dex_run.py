@@ -5,8 +5,11 @@ from datetime import datetime
 import dex_read_write
 import dex_request
 
+# sandbox or not
 IS_SANDBOX = True
-
+# dexcom only updates every 5 minutes, so dont request more than that
+REFRESH_MINS = 5
+REFRESH_SECS = REFRESH_MINS * 60
 
 client_info = {
     "client_id": "",
@@ -26,7 +29,7 @@ def create_base_url():
     return (baseURL)
 
 
-def get_client_info():
+def get_client_info(baseURL=create_base_url()):
     user_info = {}
 
     print("\nEnter Client ID: ")
@@ -38,7 +41,7 @@ def get_client_info():
     print("\nEnter Client Secret: ")
     user_info["client_secret"] = input()
 
-    full_url = (create_base_url()
+    full_url = (baseURL
                 + "/v2/oauth2/login?"
                 + "client_id=" + user_info["client_id"]
                 + "&redirect_uri=" + user_info["redirect_uri"]
@@ -60,11 +63,16 @@ def main():
     client_info = dex_read_write.read_client_info()
     authorization = dex_read_write.read_authorization()
 
-    if authorization == 1 or client_info == 1:
-        print("missing authorization or client info")
+    if authorization is not None and client_info is not None:
+        print("good")
 
     else:
-        print("authorization found")
+        print("bad")
+        get_client_info(baseURL)
+
+    # everything is set up, time for main loop
+    # currTime, lastToken
+    # while (1):
 
 
 if __name__ == '__main__':
