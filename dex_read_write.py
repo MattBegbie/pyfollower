@@ -23,6 +23,12 @@ def write_client_info(data):
         json.dump(data, outfile)
         return (0)
 
+#
+# config = open('./config.json', "w")
+#     json.dump(client_info, config)
+#     # config.write(str(client_info))
+#     config.close()
+
 
 def read_client_info():
     try:
