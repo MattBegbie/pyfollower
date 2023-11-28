@@ -11,7 +11,7 @@ client_info = {
     "redirect_uri": "",
     "response_type": "",
     "scope": "",
-    "code": ""
+    "code": "",
 }
 baseURL = ""
 
@@ -20,11 +20,11 @@ baseURL = ""
 
 def set_base_url():
     global baseURL
-    if (IS_SANDBOX):
+    if IS_SANDBOX:
         baseURL = "https://sandbox-api.dexcom.com"
     else:
         baseURL = "https://api.dexcom.com"
-    return (baseURL)
+    return baseURL
 
 
 def write_Authorization(data):
@@ -52,7 +52,7 @@ def get_client_info():
     print("Enter url from redirect: ")
     redirected_code_URL = input()
     redirected_code_URL = urlparse(redirected_code_URL)
-    client_info["code"] = parse_qs(redirected_code_URL.query)['code'][0]
+    client_info["code"] = parse_qs(redirected_code_URL.query)["code"][0]
     # client_info["code"] = code
     # print(code)
     print("\nEnter client secret: ")
@@ -67,7 +67,7 @@ def get_auth_code():
         "code": client_info["code"],
         "redirect_uri": client_info["redirect_uri"],
         "client_id": client_info["client_id"],
-        "client_secret": client_info["client_secret"]
+        "client_secret": client_info["client_secret"],
     }
 
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
@@ -80,7 +80,7 @@ def get_auth_code():
 
 
 def write_to_file():
-    config = open('./config.json', "w")
+    config = open("./config.json", "w")
     json.dump(client_info, config)
     # config.write(str(client_info))
     config.close()
