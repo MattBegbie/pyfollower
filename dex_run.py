@@ -1,7 +1,7 @@
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import datetime
-from time import sleep
+from time import sleep, strptime
 from time import time
 
 import requests
@@ -15,6 +15,7 @@ IS_SANDBOX = True
 # dexcom only updates every 5 minutes, so dont request more than that
 REFRESH_MINS = 5
 REFRESH_SECS = REFRESH_MINS * 60
+
 
 client_info = {
     "client_id": "",
@@ -124,4 +125,12 @@ def main():
 
 
 if __name__ == "__main__":
+    start_time = datetime.datetime.now().strftime("%y-%m-%dT%H:%m:%S")
+    end_time = datetime.datetime.now() - datetime.timedelta(
+        days=1, minutes=10
+    )  # minus old
+    end_time_converted = end_time.strftime("%y-%m-%dT%H:%m:%S")
+    print(start_time)
+    print(end_time)
+    print(end_time_converted)
     main()
