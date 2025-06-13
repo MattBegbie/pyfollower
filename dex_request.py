@@ -42,7 +42,7 @@ def request_refresh(client_info, authorization, baseURL):
 
 
 def request_blood_glucose_estimate(client_info, authorization, baseURL):
-    url = baseURL + "/v2/users/self/egvs"
+    url = baseURL + "/v3/users/self/egvs"
     query = {"startDate": "2022-12-05T09:12:50",
              "endDate": "2022-12-06T09:12:50"}
     authorization_string = "Bearer " + authorization["access_token"]
